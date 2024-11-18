@@ -6,7 +6,14 @@ public class Player : MonoBehaviour
 {
     private Animator animator;
     public float speed;
-    // Start is called before the first frame update
+
+    [SerializeField] GameObject playerBulletAPrefab;
+    [SerializeField] GameObject playerBulletBPrefab;
+    [SerializeField] GameObject playerBulletCPrefab;
+    [SerializeField] GameObject guideBulletPrefab;
+    bool canShoot = true;
+    public int power = 1;
+    public float shootDelay;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -15,6 +22,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update() //ÃÊ´çÈ½¼ö=fps
     {
+        Shoot();
         Move();
     }
 
@@ -38,5 +46,50 @@ public class Player : MonoBehaviour
         {
             animator.SetInteger("Move", (int)input_x);
         }
+    }
+    void Shoot()
+    {
+        if(!Input.GetKey(KeyCode.Z)) { return; }
+        if (!canShoot) { return; }
+
+        canShoot = false;
+        StartCoroutine(ShootDelay());
+
+        switch (power)
+        {
+            case 1:
+                {
+                    GameObject bulletA = Instantiate(playerBulletAPrefab);
+                    GameObject bulletB = Instantiate(playerBulletBPrefab);
+                    bulletA.transform.position = transform.position + Vector3.right * 0.1f;
+                    bulletB.transform.position = transform.position + Vector3.left * 0.1f;
+                    bulletA.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+                    bulletB.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+                    break;
+                }
+            case 2:
+                {
+                    GameObject bulletA = Instantiate(playerBulletAPrefab);
+                    GameObject bulletB = Instantiate(playerBulletBPrefab);
+                    GameObject bulletC = Instantiate(playerBulletCPrefab);
+                    bulletA.transform.position = transform.position + Vector3.right * 0.1f;
+                    bulletB.transform.position = transform.position + Vector3.left * 0.1f;
+                    bulletC.transform.position = transform.position;
+                    bulletA.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+                    bulletB.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+                    bulletC.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+                    break;
+                }
+            case 3:
+                {
+                    break;
+                }
+        }
+    }
+
+    IEnumerator ShootDelay()
+    {
+        yield return new WaitForSeconds(shootDelay);
+        canShoot = true;
     }
 }
