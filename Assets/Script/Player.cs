@@ -87,9 +87,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator ShootDelay()
+    IEnumerator ShootDelay()//内风凭
     {
-        yield return new WaitForSeconds(shootDelay);
+        yield return new WaitForSeconds(shootDelay); //new甫 静搁 可记
         canShoot = true;
     }
 }

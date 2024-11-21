@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public List<Enemy> enemys = new List<Enemy>();
-    private EnemyManager instance = null;
+    private static EnemyManager instance = null;
     private void Awake()
     {
         if(instance == null)
@@ -21,11 +21,11 @@ public class EnemyManager : MonoBehaviour
     {
         get
         {
-            if(Instance == null)
+            if(instance == null)
             {
                 return null;
             }
-            return Instance;
+            return instance;
         }
     }
 }
