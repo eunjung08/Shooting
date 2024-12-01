@@ -17,6 +17,8 @@ public class EnemyB : Enemy
     private void Update()
     {
         Move();
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        if (pos.y < -0.05) { Destroy(this.gameObject); }
     }
     private void Move()
     {
@@ -27,9 +29,9 @@ public class EnemyB : Enemy
     {
         yield return new WaitUntil(() => (transform.position.y <= 4.1f && transform.position.y >= 3.9f));
         canMove = false;
-        //Å¸°Ù
+        //Å¸ï¿½ï¿½
         Vector3 target = GameManager.Instance.player.transform.position;
-        //È¸Àü
+        //È¸ï¿½ï¿½
         while(!((transform.up.x >= (transform.position - target).normalized.x - 0.1f
             && transform.up.x <= (transform.position - target).normalized.x + 0.1f) &&
             (transform.up.y >= (transform.position - target).normalized.y - 0.1f
@@ -40,7 +42,7 @@ public class EnemyB : Enemy
         }
         Debug.Log(1);
         yield return new WaitForSeconds(1f);
-        //¹ß»ç
+        //ï¿½ß»ï¿½
         canMove = true;
         dir = transform.up * -1;
         speed = 20;

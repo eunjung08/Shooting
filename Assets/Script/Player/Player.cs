@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() //ÃÊ´çÈ½¼ö=fps
+    void Update() //ï¿½Ê´ï¿½È½ï¿½ï¿½=fps
     {
         Shoot();
         Move();
@@ -31,9 +31,9 @@ public class Player : MonoBehaviour
         float input_x = Input.GetAxisRaw("Horizontal");
         float input_y = Input.GetAxisRaw("Vertical");
 
-        Vector3 dir = new Vector3(input_x, input_y, 0).normalized; //normalized: ´ÜÀ§º¤ÅÍ
+        Vector3 dir = new Vector3(input_x, input_y, 0).normalized; //normalized: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        transform.position += dir * speed * Time.deltaTime; //Time.deltaTime: ÀüÇÁ·¹ÀÓ¿¡¼­ ÇöÇÁ·¹ÀÓ±îÁö °É¸°½Ã°£
+        transform.position += dir * speed * Time.deltaTime; //Time.deltaTime: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ï¿½ï¿½ï¿½ ï¿½É¸ï¿½ï¿½Ã°ï¿½
 
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
         if (pos.x > 1) { pos.x = 1; }
@@ -103,9 +103,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator ShootDelay()//ÄÚ·çÆ¾
+    IEnumerator ShootDelay()//ï¿½Ú·ï¿½Æ¾
     {
-        yield return new WaitForSeconds(shootDelay); //new¸¦ ¾²¸é ¿É¼Ç
+        yield return new WaitForSeconds(shootDelay); //newï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½É¼ï¿½
         canShoot = true;
     }
 }
