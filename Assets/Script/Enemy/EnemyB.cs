@@ -17,8 +17,6 @@ public class EnemyB : Enemy
     private void Update()
     {
         Move();
-        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        if (pos.y < -0.05) { Destroy(this.gameObject); }
     }
     private void Move()
     {
