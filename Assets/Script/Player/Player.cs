@@ -7,10 +7,6 @@ public class Player : MonoBehaviour
     private Animator animator;
     public float speed;
 
-    [SerializeField] GameObject playerBulletAPrefab;
-    [SerializeField] GameObject playerBulletBPrefab;
-    [SerializeField] GameObject playerBulletCPrefab;
-    [SerializeField] GameObject guideBulletPrefab;
     bool canShoot = true;
     public int power = 1;
     public float shootDelay;
@@ -59,8 +55,8 @@ public class Player : MonoBehaviour
         {
             case 1:
                 {
-                    GameObject bulletA = Instantiate(playerBulletAPrefab);
-                    GameObject bulletB = Instantiate(playerBulletBPrefab);
+                    GameObject bulletA = ObjectPool.Instance.GetObject(ObjectTypes.PlayerBulletA);
+                    GameObject bulletB = ObjectPool.Instance.GetObject(ObjectTypes.PlayerBulletA);
                     bulletA.transform.position = transform.position + Vector3.right * 0.1f;
                     bulletB.transform.position = transform.position + Vector3.left * 0.1f;
                     bulletA.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5, ForceMode2D.Impulse);
@@ -69,9 +65,9 @@ public class Player : MonoBehaviour
                 }
             case 2:
                 {
-                    GameObject bulletA = Instantiate(playerBulletAPrefab);
-                    GameObject bulletB = Instantiate(playerBulletBPrefab);
-                    GameObject bulletC = Instantiate(playerBulletCPrefab);
+                    GameObject bulletA = ObjectPool.Instance.GetObject(ObjectTypes.PlayerBulletA);
+                    GameObject bulletB = ObjectPool.Instance.GetObject(ObjectTypes.PlayerBulletA);
+                    GameObject bulletC = ObjectPool.Instance.GetObject(ObjectTypes.PlayerBulletB);
                     bulletA.transform.position = transform.position + Vector3.right * 0.1f;
                     bulletB.transform.position = transform.position + Vector3.left * 0.1f;
                     bulletC.transform.position = transform.position;
@@ -82,9 +78,9 @@ public class Player : MonoBehaviour
                 }
             case 3:
                 {
-                    GameObject bulletA = Instantiate(playerBulletAPrefab);
-                    GameObject bulletB = Instantiate(playerBulletBPrefab);
-                    GameObject bulletC = Instantiate(playerBulletCPrefab);
+                    GameObject bulletA = ObjectPool.Instance.GetObject(ObjectTypes.PlayerBulletA);
+                    GameObject bulletB = ObjectPool.Instance.GetObject(ObjectTypes.PlayerBulletA);
+                    GameObject bulletC = ObjectPool.Instance.GetObject(ObjectTypes.PlayerBulletB);
                     bulletA.transform.position = transform.position + Vector3.right * 0.1f;
                     bulletB.transform.position = transform.position + Vector3.left * 0.1f;
                     bulletC.transform.position = transform.position;
@@ -92,8 +88,8 @@ public class Player : MonoBehaviour
                     bulletB.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5, ForceMode2D.Impulse);
                     bulletC.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5, ForceMode2D.Impulse);
 
-                    GameObject guidedBulletA = Instantiate(guideBulletPrefab);
-                    GameObject guidedBulletB = Instantiate(guideBulletPrefab);
+                    GameObject guidedBulletA = ObjectPool.Instance.GetObject(ObjectTypes.GuidedBullet);
+                    GameObject guidedBulletB = ObjectPool.Instance.GetObject(ObjectTypes.GuidedBullet);
                     guidedBulletA.transform.position = transform.position;
                     guidedBulletB.transform.position = transform.position;
                     guidedBulletA.transform.Rotate(Vector3.forward * -70);

@@ -18,7 +18,7 @@ public class EnemyC : Enemy
         int i = 20;
         for(i=0; i<=20; i++)
         {
-            GameObject enemyCBullet = Instantiate(enemyBulletPrefab);
+            GameObject enemyCBullet = ObjectPool.Instance.GetObject(ObjectTypes.EnemyBullet);
             enemyCBullet.transform.position = firepoint.transform.position;
             enemyCBullet.transform.rotation = firepoint. transform.rotation;
             enemyCBullet.GetComponent<Rigidbody2D>().AddForce(enemyCBullet.transform.up*10, ForceMode2D.Impulse);
