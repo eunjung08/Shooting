@@ -92,6 +92,8 @@ public class Player : MonoBehaviour
                     GameObject guidedBulletB = ObjectPool.Instance.GetObject(ObjectTypes.GuidedBullet);
                     guidedBulletA.transform.position = transform.position;
                     guidedBulletB.transform.position = transform.position;
+                    guidedBulletA.transform.rotation = Quaternion.identity;
+                    guidedBulletA.transform.rotation = Quaternion.identity;
                     guidedBulletA.transform.Rotate(Vector3.forward * -70);
                     guidedBulletB.transform.Rotate(Vector3.forward * 70);
                     break;

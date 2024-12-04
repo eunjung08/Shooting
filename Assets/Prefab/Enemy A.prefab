@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5984270407812253794}
   m_Layer: 0
   m_Name: Enemy A
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,9 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1c582ce1446a842a067a0ba10ce9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBulletPrefab: {fileID: 7801073720145295388, guid: 6a0b728a2c12259459cd2f60e0458d3c, type: 3}
+  enemyType: 4
   Hp: 10
-  speed: 1
+  speed: 3
   firepoint: {fileID: 6909836291428738041}
   rotateSpeed: 1
-  attackDelay: 1
+  attackDelay: 2

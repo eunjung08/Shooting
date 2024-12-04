@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] ObjectTypes enemyType;
     public int Hp;
     public float speed;
     // Start is called before the first frame update
@@ -24,6 +25,18 @@ public class Enemy : MonoBehaviour
         {
             EnemyManager.Instance.enemys.Remove(this);
             Destroy(this.gameObject);
+        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        try
+        {
+            ObjectPool.Instance.DestroyObject(this.gameObject, enemyType);
+        }
+        catch
+        {
+
         }
     }
 }

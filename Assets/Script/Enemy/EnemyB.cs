@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class EnemyB : Enemy
 {
+
     public float rotateSpeed;
     bool canMove = true;
     Vector3 dir = Vector3.down;
 
     private void Start()
     {
+        speed = 3;
         StartCoroutine(Shoot());
     }
 
@@ -38,7 +40,6 @@ public class EnemyB : Enemy
             transform.up = Vector3.MoveTowards(transform.up, (transform.position - target).normalized, rotateSpeed);
             yield return new WaitForSeconds(0.05f);
         }
-        Debug.Log(1);
         yield return new WaitForSeconds(1f);
         //�߻�
         canMove = true;

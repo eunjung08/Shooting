@@ -40,9 +40,6 @@ public class ObjectPool : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    private void Start()
-    {
         Initialize();
     }
     private void Initialize()

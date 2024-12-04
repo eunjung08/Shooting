@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyC : Enemy
 {
+    [SerializeField] ObjectTypes enemyType;
     public Transform firepoint;
     bool canMove = true;
 
