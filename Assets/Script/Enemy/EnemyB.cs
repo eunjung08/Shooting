@@ -9,8 +9,7 @@ public class EnemyB : Enemy
     public float rotateSpeed;
     bool canMove = true;
     Vector3 dir = Vector3.down;
-
-    private void Start()
+    private void OnEnable()
     {
         speed = 3;
         StartCoroutine(Shoot());

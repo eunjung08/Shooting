@@ -32,11 +32,11 @@ public class EnemyManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         GameObject enemy1 = ObjectPool.Instance.GetObject(ObjectTypes.EnemyC);
-        //GameObject enemy2 = ObjectPool.Instance.GetObject(ObjectTypes.EnemyC);
+        // GameObject enemy2 = ObjectPool.Instance.GetObject(ObjectTypes.EnemyC);
         enemy1.transform.position = new Vector3(0, 6, 0);
-        //enemy2.transform.position = new Vector3(1, 6, 0);
+        // enemy2.transform.position = new Vector3(1, 6, 0);
         enemy1.transform.rotation = Quaternion.identity;
-        //enemy2.transform.rotation = Quaternion.identity;
+        // enemy2.transform.rotation = Quaternion.identity;
 
     }
 

@@ -144,10 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 5
-  Hp: 5
+  Hp: 20
   speed: 3
   dropItems:
+  - itemType: 7
+    count: 3
+    probability: 30
   - itemType: 8
     count: 3
-    probability: 100
+    probability: 20
+  - itemType: 9
+    count: 3
+    probability: 10
   rotateSpeed: 0.02

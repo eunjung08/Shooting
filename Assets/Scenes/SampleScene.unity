@@ -1589,10 +1589,10 @@ MonoBehaviour:
   HpItem_Prefab: {fileID: 7002615188909135439, guid: 2f5322f6def451346ac728d7f489933b, type: 3}
   PowerItem_Prefab: {fileID: 4542253747514574440, guid: 8e711a77e7c4a8c4ea3c8c1a6496df18, type: 3}
   ScoreItem_Prefab: {fileID: 4571711454905217297, guid: 9ffaf88efe51ff6449b538805ef069a0, type: 3}
-  playerBulletA_Count: 50
-  playerBulletB_Count: 25
-  guidedBullet_Count: 75
-  enemyBullet_Count: 200
+  playerBulletA_Count: 100
+  playerBulletB_Count: 100
+  guidedBullet_Count: 100
+  enemyBullet_Count: 1000
   enemyA_Count: 10
   enemyB_Count: 10
   enemyC_Count: 5
