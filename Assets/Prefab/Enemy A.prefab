@@ -166,8 +166,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 4
-  Hp: 10
+  Hp: 5
   speed: 3
+  dropItems:
+  - itemType: 7
+    count: 3
+    probability: 10
+  - itemType: 8
+    count: 3
+    probability: 100
+  - itemType: 9
+    count: 3
+    probability: 10
   firepoint: {fileID: 6909836291428738041}
   rotateSpeed: 1
   attackDelay: 2

@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     public float speed;
 
+    public int hp;
+
     bool canShoot = true;
     public int power = 1;
     public float shootDelay;
@@ -105,5 +107,13 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(shootDelay); //new�� ���� �ɼ�
         canShoot = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Item"))
+        {
+            collision.GetComponent<Item>().GiveEffect();
+        }
     }
 }

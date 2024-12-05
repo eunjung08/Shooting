@@ -13,6 +13,9 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] GameObject enemyA_Prefab;
     [SerializeField] GameObject enemyB_Prefab;
     [SerializeField] GameObject enemyC_Prefab;
+    [SerializeField] GameObject HpItem_Prefab;
+    [SerializeField] GameObject PowerItem_Prefab;
+    [SerializeField] GameObject ScoreItem_Prefab;
 
     [SerializeField] int playerBulletA_Count;
     [SerializeField] int playerBulletB_Count;
@@ -21,6 +24,9 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int enemyA_Count;
     [SerializeField] int enemyB_Count;
     [SerializeField] int enemyC_Count;
+    [SerializeField] int HpItem_Count;
+    [SerializeField] int PowerItem_Count;
+    [SerializeField] int ScoreItem_Count;
 
     private Queue<GameObject> playerBulletAs = new Queue<GameObject>();
     private Queue<GameObject> playerBulletBs = new Queue<GameObject>();
@@ -29,6 +35,9 @@ public class ObjectPool : MonoBehaviour
     private Queue<GameObject> enemyAs = new Queue<GameObject>();
     private Queue<GameObject> enemyBs = new Queue<GameObject>();
     private Queue<GameObject> enemyCs = new Queue<GameObject>();
+    private Queue<GameObject> HpItems = new Queue<GameObject>();
+    private Queue<GameObject> PowerItems = new Queue<GameObject>();
+    private Queue<GameObject> ScoreItems = new Queue<GameObject>();
 
     private void Awake()
     {
@@ -86,6 +95,24 @@ public class ObjectPool : MonoBehaviour
             obj.SetActive(false);
             enemyCs.Enqueue(obj);
         }
+        for (int i = 0; i < HpItem_Count; i++)
+        {
+            GameObject obj = Instantiate(HpItem_Prefab);
+            obj.SetActive(false);
+            HpItems.Enqueue(obj);
+        }
+        for (int i = 0; i < PowerItem_Count; i++)
+        {
+            GameObject obj = Instantiate(PowerItem_Prefab);
+            obj.SetActive(false);
+            PowerItems.Enqueue(obj);
+        }
+        for (int i = 0; i < ScoreItem_Count; i++)
+        {
+            GameObject obj = Instantiate(ScoreItem_Prefab);
+            obj.SetActive(false);
+            ScoreItems.Enqueue(obj);
+        }
     }
     public GameObject GetObject(ObjectTypes type)
     {
@@ -112,6 +139,15 @@ public class ObjectPool : MonoBehaviour
                 break;
             case ObjectTypes.EnemyC:
                 obj = enemyCs.Dequeue();
+                break;
+            case ObjectTypes.HpItem:
+                obj = HpItems.Dequeue();
+                break;
+            case ObjectTypes.PowerItem:
+                obj = PowerItems.Dequeue();
+                break;
+            case ObjectTypes.ScoreItem:
+                obj = ScoreItems.Dequeue();
                 break;
         }
         obj.SetActive(true);
@@ -143,6 +179,15 @@ public class ObjectPool : MonoBehaviour
             case ObjectTypes.EnemyC:
                 enemyCs.Enqueue(obj);
                 break;
+            case ObjectTypes.HpItem:
+                HpItems.Enqueue(obj);
+                break;
+            case ObjectTypes.PowerItem:
+                PowerItems.Enqueue(obj);
+                break;
+            case ObjectTypes.ScoreItem:
+                ScoreItems.Enqueue(obj);
+                break;
         }
     }
 
@@ -160,5 +205,5 @@ public class ObjectPool : MonoBehaviour
 }
 public enum ObjectTypes
 {
-    PlayerBulletA, PlayerBulletB, GuidedBullet, EnemyBullet, EnemyA, EnemyB, EnemyC
+    PlayerBulletA, PlayerBulletB, GuidedBullet, EnemyBullet, EnemyA, EnemyB, EnemyC, HpItem, PowerItem, ScoreItem
 }

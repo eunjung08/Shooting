@@ -10,7 +10,7 @@ public class GuidedBullet : PlayerBullet
     public float rotateSpeed;
     public float speed;
 
-    private void Start()
+    private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
         if (EnemyManager.Instance.enemys.Count > 0)
