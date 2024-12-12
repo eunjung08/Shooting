@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public Player player;
 
+    public bool isEndGame = false;
     public int score;
     private void Awake()
     {
@@ -19,7 +20,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    public void EndGame()
+    {
+        player.GetComponent<SpriteRenderer>().enabled = false;
+        isEndGame = true;
+    }
     public static GameManager Instance
     {
         get

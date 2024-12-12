@@ -5,6 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
+
     public float speed;
 
     public int hp;
@@ -12,16 +15,22 @@ public class Player : MonoBehaviour
     bool canShoot = true;
     public int power = 1;
     public float shootDelay;
+
+    public bool canHit = true;
     void Start()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update() //�ʴ�Ƚ��=fps
     {
-        Shoot();
-        Move();
+        if (!GameManager.Instance.isEndGame)
+        {
+            Shoot();
+            Move();
+        }
     }
 
     private void Move()
@@ -29,9 +38,9 @@ public class Player : MonoBehaviour
         float input_x = Input.GetAxisRaw("Horizontal");
         float input_y = Input.GetAxisRaw("Vertical");
 
-        Vector3 dir = new Vector3(input_x, input_y, 0).normalized; //normalized: ��������
+        Vector3 dir = new Vector3(input_x, input_y, 0).normalized;
 
-        transform.position += dir * speed * Time.deltaTime; //Time.deltaTime: �������ӿ��� �������ӱ��� �ɸ��ð�
+        transform.position += dir * speed * Time.deltaTime;
 
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
         if (pos.x > 1) { pos.x = 1; }
@@ -102,10 +111,39 @@ public class Player : MonoBehaviour
                 }
         }
     }
-
-    IEnumerator ShootDelay()//�ڷ�ƾ
+    public void OnDamage()
     {
-        yield return new WaitForSeconds(shootDelay); //new�� ���� �ɼ�
+        if(!canHit) { return; }
+        hp--;
+        if(hp > 0)
+        {
+            StartCoroutine(hitEffect());
+            if(power > 1)
+            {
+                power--;
+            }
+        }
+        else
+        {
+            animator.SetTrigger("Explosion");
+            
+        }
+    }
+    public void EndGame()
+    {
+        GameManager.Instance.EndGame();
+    }
+    IEnumerator hitEffect()
+    {
+        canHit = false;
+        spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+        yield return new WaitForSeconds(1f);
+        canHit = true;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
+    IEnumerator ShootDelay()
+    {
+        yield return new WaitForSeconds(shootDelay);
         canShoot = true;
     }
 

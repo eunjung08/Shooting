@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 
 public class EnemyA : Enemy
@@ -15,6 +16,12 @@ public class EnemyA : Enemy
     }
     private void Update()
     {
+        if (Hp <= 0)
+        {
+            ItemDrop();
+            EnemyManager.Instance.enemys.Remove(this);
+            ObjectPool.Instance.DestroyObject(this.gameObject, enemyType);
+        }
         Move();
     }
 
