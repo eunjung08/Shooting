@@ -16,7 +16,6 @@ public class GuidedBullet : PlayerBullet
         if (EnemyManager.Instance.enemys.Count > 0)
         {
             List<Enemy> targets = EnemyManager.Instance.enemys.OrderByDescending(_ => Vector3.Distance(_.transform.position, transform.position)).ToList();
-            //람다식, enemys의 위치와 자신의 위치를 비교해서 내림차순으로 정렬
             target = targets[targets.Count - 1].transform;
         }
 

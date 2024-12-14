@@ -32,13 +32,13 @@ public class Boss : Enemy
         currentspellTime = 0;
         Hp = 100;
         //int spellIndex = spellIndexes[Random.Range(0, spellIndexes.Count)];
-        int spellIndex = 2;
+        int spellIndex = 4;
         spellIndexes.Remove(spellIndex);
         currentSpell = StartCoroutine("Spell" + spellIndex);
     }
     IEnumerator Spell1()
     {
-        //while (true)
+        while (true)
         {
             int count = 20;
             for(int i = 0; i < count; i++)
@@ -97,13 +97,52 @@ public class Boss : Enemy
     }
     IEnumerator Spell3()
     {
-        Debug.Log(3);
-        yield return null;
+        for(int i = 0; i < 10; i++)
+        {
+            Vector3 dir = GameManager.Instance.transform.position - bulletPoints[0].position;
+            bulletPoints[0].up = dir.normalized;
+            bulletPoints[0].Rotate(Vector3.forward * 45);
+            for(int k = 0; k < 10; k++)
+            {
+                GameObject bullet = ObjectPool.Instance.GetObject(ObjectTypes.EnemyBullet);
+                bullet.transform.position = bulletPoints[0].transform.position;
+                bullet.transform.rotation = bulletPoints[0].transform.rotation;
+                bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.up * 7, ForceMode2D.Impulse);
+                bulletPoints[0].transform.Rotate(Vector3.forward * -10);
+                yield return new WaitForSeconds(0.2f);
+            }
+                
+            for(int k = 0; k < 10; k++)
+            {
+                GameObject bullet = ObjectPool.Instance.GetObject(ObjectTypes.EnemyBullet);
+                bullet.transform.position = bulletPoints[0].transform.position;
+                bullet.transform.rotation = bulletPoints[0].transform.rotation;
+                bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.up * 7, ForceMode2D.Impulse);
+                bulletPoints[0].transform.Rotate(Vector3.forward * 10);
+                yield return new WaitForSeconds(0.2f);
+            }
+
+            yield return new WaitForSeconds(0.7f);
+        }
     }
     IEnumerator Spell4()
     {
-        Debug.Log(4);
-        yield return null;
+        Vector3 dir = GameManager.Instance.player.transform.position - bulletPoints[0].position;
+        bulletPoints[0].up = dir.normalized;
+        bulletPoints[0].Rotate(Vector3.forward * 30);
+        for(int i = 0; i < 5; i++)
+        {
+            for(int j = 0; j < 20; j++)
+            {
+            GameObject bullet = ObjectPool.Instance.GetObject(ObjectTypes.BossBulletC);
+            bullet.transform.position = bulletPoints[0].position;
+            bullet.transform.rotation = bulletPoints[0].rotation;
+            bullet.GetComponent<Rigidbody2D>().AddForce((GameManager.Instance.player.transform.position) - bullet.transform.position.normalized * Random.Range(3,10), ForceMode2D.Impulse);
+            bulletPoints[0].transform.Rotate(Vector3.forward * -15);
+
+            yield return new WaitForSeconds(1f);
+            }
+        }
     }
     void Move()
     {

@@ -1617,6 +1617,7 @@ MonoBehaviour:
   enemyBullet_Prefab: {fileID: 7801073720145295388, guid: 6a0b728a2c12259459cd2f60e0458d3c, type: 3}
   bossBulletA_Prefab: {fileID: 7646658517320613907, guid: 0150a7bfa0fcd8a4c96729855f0bf4b0, type: 3}
   bossBulletB_Prefab: {fileID: 6955790792573866420, guid: 0ae63c489002d404c88a1a8cc1507ec0, type: 3}
+  bossBulletC_Prefab: {fileID: 2501390080353740972, guid: 0e14ba1e9cb20f94181585b7c8ec0675, type: 3}
   enemyA_Prefab: {fileID: 5236914800643748048, guid: 95f49ba9fa2745b47bce049adf5be30c, type: 3}
   enemyB_Prefab: {fileID: 8268824619139380335, guid: ba71c28b44c644844a358034eca301ee, type: 3}
   enemyC_Prefab: {fileID: 8175815591293769866, guid: 09923c170f9c2514eb2db36d23cdf62f, type: 3}
@@ -1627,8 +1628,9 @@ MonoBehaviour:
   playerBulletB_Count: 100
   guidedBullet_Count: 100
   enemyBullet_Count: 1000
-  bossBulletA_Count: 3
+  bossBulletA_Count: 10
   bossBulletB_Count: 500
+  bossBulletC_Count: 200
   enemyA_Count: 10
   enemyB_Count: 10
   enemyC_Count: 5
@@ -1732,7 +1734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  hp: 2
+  hp: 50
   power: 1
   shootDelay: 0.2
   canHit: 1
@@ -1948,7 +1950,7 @@ GameObject:
   - component: {fileID: 1988354465}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2107,7 +2109,7 @@ Transform:
   m_GameObject: {fileID: 1988354464}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 7.14, z: 0}
+  m_LocalPosition: {x: -0.01, y: 7.91, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
