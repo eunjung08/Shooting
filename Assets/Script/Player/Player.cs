@@ -125,6 +125,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            canHit = false;
             animator.SetTrigger("Explosion");
             
         }

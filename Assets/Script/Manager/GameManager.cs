@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +25,14 @@ public class GameManager : MonoBehaviour
     {
         player.GetComponent<SpriteRenderer>().enabled = false;
         isEndGame = true;
+        DataManager.Instance.currentScore = score;
+        DataManager.Instance.UpdateRank();
+
+        Invoke("LoadRankScene", 1f);
+    }
+    void LoadRankScene()
+    {
+        SceneManager.LoadScene(2);
     }
     public static GameManager Instance
     {

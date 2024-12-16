@@ -15,11 +15,11 @@ public class Boss : Enemy
 
     public float spellTimer;
     public float currentspellTime;
-    // Update is called once per frame
     void Update()
     {
         Move();
         SpellChange();
+        currentspellTime += Time.deltaTime;
     }
     void SpellChange()
     {
@@ -29,10 +29,15 @@ public class Boss : Enemy
         {
             StopCoroutine(currentSpell);
         }
+
+        if(spellIndexes.Count <= 0)
+        {
+            GameManager.Instance.EndGame();
+        }
         currentspellTime = 0;
         Hp = 100;
-        //int spellIndex = spellIndexes[Random.Range(0, spellIndexes.Count)];
-        int spellIndex = 3;
+
+        int spellIndex = spellIndexes[Random.Range(0, spellIndexes.Count)];
         spellIndexes.Remove(spellIndex);
         currentSpell = StartCoroutine("Spell" + spellIndex);
     }
