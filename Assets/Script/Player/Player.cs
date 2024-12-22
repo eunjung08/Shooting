@@ -23,8 +23,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update() //�ʴ�Ƚ��=fps
+    void Update()
     {
         if (!GameManager.Instance.isEndGame)
         {
