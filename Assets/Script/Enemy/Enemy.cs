@@ -56,6 +56,7 @@ public class Enemy : MonoBehaviour
     {
         try
         {
+            EnemyManager.Instance.enemys.Remove(this);
             ObjectPool.Instance.DestroyObject(this.gameObject, enemyType);
         }
         catch

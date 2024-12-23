@@ -6,7 +6,7 @@ public class ScoreItem : Item
 {
     public override void GiveEffect()
     {
-        GameManager.Instance.score += 100;
+        GameManager.Instance.AddScore(100);
         ObjectPool.Instance.DestroyObject(this.gameObject, itemType);
     }
 }

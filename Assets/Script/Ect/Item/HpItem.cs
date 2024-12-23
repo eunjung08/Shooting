@@ -6,7 +6,11 @@ public class HpItem : Item
 {
     public override void GiveEffect()
     {
-        GameManager.Instance.player.hp++;
+        if(GameManager.Instance.player.hp < 3)
+        {
+            GameManager.Instance.player.hp++;
+            InGameUI.Instance.UpdatePlayerHpUI(GameManager.Instance.player.hp++);
+        }
         ObjectPool.Instance.DestroyObject(this.gameObject, itemType);
     }
 }

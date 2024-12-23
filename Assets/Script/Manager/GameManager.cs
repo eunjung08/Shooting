@@ -7,9 +7,10 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public Player player;
+    public Boss boss;
 
     public bool isEndGame = false;
-    public int score;
+    private int score;
     private void Awake()
     {
         if (instance == null)
@@ -20,6 +21,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void AddScore(int _score)
+    {
+        score += _score;
+        InGameUI.Instance.UpdateScoreUI(score);
     }
     public void EndGame()
     {

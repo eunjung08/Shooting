@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
     {
         if(!canHit) { return; }
         hp--;
+        InGameUI.Instance.UpdatePlayerHpUI(hp);
         if(hp > 0)
         {
             StartCoroutine(hitEffect());

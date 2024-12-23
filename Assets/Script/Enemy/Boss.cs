@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Profiling.Editor;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boss : Enemy
 {
+    public int maxHp;
+
     public List<Transform> bulletPoints = new List<Transform>();
 
     public List<int> spellIndexes = new List<int>();
@@ -35,7 +35,7 @@ public class Boss : Enemy
             GameManager.Instance.EndGame();
         }
         currentspellTime = 0;
-        Hp = 100;
+        Hp = maxHp;
 
         int spellIndex = spellIndexes[Random.Range(0, spellIndexes.Count)];
         spellIndexes.Remove(spellIndex);
@@ -102,7 +102,7 @@ public class Boss : Enemy
     }
     IEnumerator Spell3()
     {
-        for(int i = 0; i < 30; i++)
+        for (int i = 0; i < 30; i++)
         {
             Vector3 dir = GameManager.Instance.transform.position - bulletPoints[0].position;
             bulletPoints[0].up = dir.normalized;
@@ -110,7 +110,7 @@ public class Boss : Enemy
             Vector3 dir2 = GameManager.Instance.transform.position - bulletPoints[1].position;
             bulletPoints[1].up = dir.normalized;
             bulletPoints[1].Rotate(Vector3.forward * 45);
-            for(int k = 0; k < 10; k++)
+            for (int k = 0; k < 10; k++)
             {
                 GameObject bullet = ObjectPool.Instance.GetObject(ObjectTypes.EnemyBullet);
                 bullet.transform.position = bulletPoints[0].transform.position;
@@ -124,8 +124,8 @@ public class Boss : Enemy
                 bulletPoints[1].transform.Rotate(Vector3.forward * -10);
                 yield return new WaitForSeconds(0.25f);
             }
-                
-            for(int k = 0; k < 10; k++)
+
+            for (int k = 0; k < 10; k++)
             {
                 GameObject bullet = ObjectPool.Instance.GetObject(ObjectTypes.EnemyBullet);
                 bullet.transform.position = bulletPoints[0].transform.position;
@@ -162,7 +162,7 @@ public class Boss : Enemy
     }
     void Move()
     {
-        if (transform.position.y <= 3) { canAttack = true; return; }
+        if (transform.position.y <= 3) { canAttack = true; InGameUI.Instance.EnableBossHpBar(); return; }
         transform.position += Vector3.down * speed * Time.deltaTime;
     }
 }

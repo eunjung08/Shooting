@@ -188,5 +188,4 @@ MonoBehaviour:
   - itemType: 9
     count: 3
     probability: 50
-  enemyType: 6
   firepoint: {fileID: 1377756304786794761}

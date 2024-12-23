@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 
 public class EnemyA : Enemy
